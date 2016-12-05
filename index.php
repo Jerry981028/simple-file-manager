@@ -7,7 +7,7 @@ Liscense: MIT
 ********************************/
 
 // Set to false to disable delete button and delete POST request.
-$allow_delete = true;
+$allow_delete = false;
 
 /* Uncomment section below, if you want a trivial password protection */
 
@@ -192,7 +192,7 @@ a.delete {display:inline-block;
 	padding:4px 0 4px 20px;
 }
 </style>
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+<script src="../jquery/jquery.min.js"></script>
 <script>
 (function($){
 	$.fn.tablesorter = function() {
@@ -286,7 +286,11 @@ $(function(){
 
 	function uploadFile(file) {
 		var folder = window.location.hash.substr(1);
-
+//---------------------------------------------------------
+		var $error_row = 'Error: Upload is disabled.';
+			$('#upload_progress').append($error_row);
+			return false;
+//---------------------------------------------------------
 		if(file.size > MAX_UPLOAD_SIZE) {
 			var $error_row = renderFileSizeErrorRow(file,folder);
 			$('#upload_progress').append($error_row);
@@ -417,5 +421,5 @@ $(function(){
 </tr></thead><tbody id="list">
 
 </tbody></table>
-<footer>simple php filemanager by <a href="https://github.com/jcampbell1">jcampbell1</a></footer>
+<footer>Hosted by <a href="https://jerry981028.ml">Jerry</a><center><a href="https://github.com/jcampbell1">jcampbell1</a></center></footer>
 </body></html>
